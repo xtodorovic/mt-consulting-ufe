@@ -46,7 +46,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          xtodorovicm/ambulance-ufe
+          xtodorovicm/mt-consulting-ufe
         tags: |
           type=schedule
           type=ref,event=branch
