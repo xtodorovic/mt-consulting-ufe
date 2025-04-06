@@ -6,6 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface ConsultationDetail {
+        "consultationId": number;
+    }
+    interface ConsultationForm {
+    }
+    interface ConsultationList {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -20,19 +27,56 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface VideoSession {
+    }
 }
 declare global {
+    interface HTMLConsultationDetailElement extends Components.ConsultationDetail, HTMLStencilElement {
+    }
+    var HTMLConsultationDetailElement: {
+        prototype: HTMLConsultationDetailElement;
+        new (): HTMLConsultationDetailElement;
+    };
+    interface HTMLConsultationFormElement extends Components.ConsultationForm, HTMLStencilElement {
+    }
+    var HTMLConsultationFormElement: {
+        prototype: HTMLConsultationFormElement;
+        new (): HTMLConsultationFormElement;
+    };
+    interface HTMLConsultationListElement extends Components.ConsultationList, HTMLStencilElement {
+    }
+    var HTMLConsultationListElement: {
+        prototype: HTMLConsultationListElement;
+        new (): HTMLConsultationListElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLVideoSessionElement extends Components.VideoSession, HTMLStencilElement {
+    }
+    var HTMLVideoSessionElement: {
+        prototype: HTMLVideoSessionElement;
+        new (): HTMLVideoSessionElement;
+    };
     interface HTMLElementTagNameMap {
+        "consultation-detail": HTMLConsultationDetailElement;
+        "consultation-form": HTMLConsultationFormElement;
+        "consultation-list": HTMLConsultationListElement;
         "my-component": HTMLMyComponentElement;
+        "video-session": HTMLVideoSessionElement;
     }
 }
 declare namespace LocalJSX {
+    interface ConsultationDetail {
+        "consultationId"?: number;
+    }
+    interface ConsultationForm {
+    }
+    interface ConsultationList {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -47,15 +91,25 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface VideoSession {
+    }
     interface IntrinsicElements {
+        "consultation-detail": ConsultationDetail;
+        "consultation-form": ConsultationForm;
+        "consultation-list": ConsultationList;
         "my-component": MyComponent;
+        "video-session": VideoSession;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "consultation-detail": LocalJSX.ConsultationDetail & JSXBase.HTMLAttributes<HTMLConsultationDetailElement>;
+            "consultation-form": LocalJSX.ConsultationForm & JSXBase.HTMLAttributes<HTMLConsultationFormElement>;
+            "consultation-list": LocalJSX.ConsultationList & JSXBase.HTMLAttributes<HTMLConsultationListElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "video-session": LocalJSX.VideoSession & JSXBase.HTMLAttributes<HTMLVideoSessionElement>;
         }
     }
 }
