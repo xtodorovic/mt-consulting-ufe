@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AppRoot {
+    }
     interface ConsultationDetail {
         "consultationId": number;
     }
@@ -31,6 +33,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
+    }
+    var HTMLAppRootElement: {
+        prototype: HTMLAppRootElement;
+        new (): HTMLAppRootElement;
+    };
     interface HTMLConsultationDetailElement extends Components.ConsultationDetail, HTMLStencilElement {
     }
     var HTMLConsultationDetailElement: {
@@ -62,6 +70,7 @@ declare global {
         new (): HTMLVideoSessionElement;
     };
     interface HTMLElementTagNameMap {
+        "app-root": HTMLAppRootElement;
         "consultation-detail": HTMLConsultationDetailElement;
         "consultation-form": HTMLConsultationFormElement;
         "consultation-list": HTMLConsultationListElement;
@@ -70,6 +79,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface AppRoot {
+    }
     interface ConsultationDetail {
         "consultationId"?: number;
     }
@@ -94,6 +105,7 @@ declare namespace LocalJSX {
     interface VideoSession {
     }
     interface IntrinsicElements {
+        "app-root": AppRoot;
         "consultation-detail": ConsultationDetail;
         "consultation-form": ConsultationForm;
         "consultation-list": ConsultationList;
@@ -105,6 +117,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "consultation-detail": LocalJSX.ConsultationDetail & JSXBase.HTMLAttributes<HTMLConsultationDetailElement>;
             "consultation-form": LocalJSX.ConsultationForm & JSXBase.HTMLAttributes<HTMLConsultationFormElement>;
             "consultation-list": LocalJSX.ConsultationList & JSXBase.HTMLAttributes<HTMLConsultationListElement>;

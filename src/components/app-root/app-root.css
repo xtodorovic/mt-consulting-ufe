@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f9fc;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+nav {
+  background-color: #ffffff;            /* Light gray background */
+  padding: 1rem 2rem;                /* Padding around the nav */
+  display: flex;
+  justify-content: center;          /* Center the nav links horizontally */
+  gap: 1.5rem;                       /* Space between links */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+  border-radius: 8px;
+  margin: 1rem auto;
+  max-width: 800px;
+}
+
+nav a {
+  color: #333;                       /* Dark gray text */
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: #ddd;           /* Slightly darker on hover */
+}
+
+nav a.active {
+  background-color: #aaa;           /* Active state - medium gray */
+  color: white;
+}
