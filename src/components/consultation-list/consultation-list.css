@@ -51,3 +51,11 @@ li span {
   font-size: 0.8rem;
   color: #888;
 }
+
+.error {
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+}

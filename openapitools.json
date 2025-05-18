@@ -5,14 +5,32 @@
       "version": "6.6.0",
       "generators": {
           "ambulance-wl": {
-              "generatorName": "typescript-fetch"   ,
-              "glob": "api/consulting.openapi.yaml",
-              "output": "#{cwd}/src/api/consulting-requests",
-              "additionalProperties": {
-                  "supportsES6": "true",
-                  "withInterfaces": true
-              }
-          }
-      }
-  }
+                "generatorName": "typescript-fetch"   ,
+                "glob": "api/consulting.openapi.yaml",
+                "output": "#{cwd}/src/api/consulting-requests",
+                "additionalProperties": {
+                    "supportsES6": "true",
+                    "withInterfaces": true
+                }
+            },
+            "consulting-form": {
+                "generatorName": "typescript-fetch",
+                "glob": "api/consulting-form.openapi.yaml",
+                "output": "#{cwd}/src/api/consulting-form",
+                "additionalProperties": {
+                    "supportsES6": "true",
+                    "withInterfaces": true
+                }
+            },
+            "consulting-edit": {
+                "generatorName": "typescript-fetch",
+                "glob": "api/consulting-edit.openapi.yaml",
+                "output": "#{cwd}/src/api/consulting-edit",
+                "additionalProperties": {
+                    "supportsES6": "true",
+                    "withInterfaces": true
+                }
+            }
+        }
+    }
 }

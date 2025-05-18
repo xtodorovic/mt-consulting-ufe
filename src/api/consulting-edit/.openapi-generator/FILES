@@ -1,0 +1,7 @@
+.openapi-generator-ignore
+apis/ConsultationEditApi.ts
+apis/index.ts
+index.ts
+models/ConsultationUpdate.ts
+models/index.ts
+runtime.ts

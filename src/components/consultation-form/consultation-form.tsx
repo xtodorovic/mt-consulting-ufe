@@ -1,4 +1,5 @@
 import { Component, h, State } from '@stencil/core';
+import { ConsultingFormApi, Configuration } from '../../api/consulting-form';
 
 @Component({
   tag: 'consultation-form',
@@ -7,12 +8,36 @@ import { Component, h, State } from '@stencil/core';
 })
 export class ConsultationForm {
   @State() name: string = '';
+  @State() email: string = '';
   @State() symptoms: string = '';
+  @State() statusMessage: string = '';
 
-  handleSubmit = (e: Event) => {
+  apiBase: string = 'http://localhost:5000/api';
+
+  handleSubmit = async (e: Event) => {
     e.preventDefault();
-    console.log('Submitting consultation', { name: this.name, symptoms: this.symptoms });
-    // TODO: Send data to API
+
+    const formData = {
+      name: this.name,
+      email: this.email,
+      symptoms: this.symptoms,
+    };
+
+    try {
+      const config = new Configuration({ basePath: this.apiBase });
+      const formApi = new ConsultingFormApi(config);
+
+      // The exact method name may vary depending on your OpenAPI generator output
+      await formApi.submitConsultingForm({ consultingForm: formData });
+
+      this.statusMessage = 'Form submitted successfully!';
+      this.name = '';
+      this.email = '';
+      this.symptoms = '';
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      this.statusMessage = 'Submission failed. Please try again later.';
+    }
   };
 
   render() {
@@ -32,6 +57,16 @@ export class ConsultationForm {
           </label>
 
           <label>
+            Your Email
+            <input
+              type="email"
+              value={this.email}
+              onInput={e => this.email = (e.target as HTMLInputElement).value}
+              required
+            />
+          </label>
+
+          <label>
             Describe Your Symptoms
             <textarea
               value={this.symptoms}
@@ -42,6 +77,8 @@ export class ConsultationForm {
 
           <button type="submit">Submit Request</button>
         </form>
+
+        {this.statusMessage && <p class="status">{this.statusMessage}</p>}
       </div>
     );
   }
