@@ -1,5 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { ConsultationList } from '../consultation-list';
+jest.mock('@material/web/icon/icon', () => {});
 
 describe('consultation-list', () => {
   it('renders consultation list items', async () => {

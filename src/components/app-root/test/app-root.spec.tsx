@@ -10,9 +10,17 @@ describe('app-root', () => {
     expect(page.root).toEqualHtml(`
       <app-root>
         <mock:shadow-root>
-          <slot></slot>
+          <div>
+            <nav>
+              <a href="/">Home</a>
+              <a href="/form">Form</a>
+              <a href="/requests-list">Requests</a>
+            </nav>
+            <main></main>
+          </div>
         </mock:shadow-root>
       </app-root>
     `);
+
   });
 });
