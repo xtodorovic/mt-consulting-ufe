@@ -22,12 +22,10 @@ export class AppRoot {
         <nav>
           <a href="/">Home</a>
           <a href="/form">Form</a>
-          <a href="/detail">Detail</a>
           <a href="/requests-list">Requests</a>
         </nav>
         <main>
           {this.route === '/form' && <consultation-form></consultation-form>}
-          {this.route === '/detail' && <consultation-detail></consultation-detail>}
           {this.route === '/requests-list' && <consultation-list></consultation-list>}
         </main>
       </div>

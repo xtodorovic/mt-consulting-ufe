@@ -1,5 +1,5 @@
 import { Component, h, State } from '@stencil/core';
-import { ConsultingFormApi, Configuration } from '../../api/consulting-form';
+import { ConsultationsApi, Configuration } from '../../api/consulting-requests';
 
 @Component({
   tag: 'consultation-form',
@@ -12,12 +12,13 @@ export class ConsultationForm {
   @State() symptoms: string = '';
   @State() statusMessage: string = '';
 
-  apiBase: string = 'http://localhost:5000/api';
+  apiBase: string = 'http://localhost:8080/api';
 
   handleSubmit = async (e: Event) => {
     e.preventDefault();
 
     const formData = {
+      id: null, // or 0, depending on your backend expectations
       name: this.name,
       email: this.email,
       symptoms: this.symptoms,
@@ -25,10 +26,10 @@ export class ConsultationForm {
 
     try {
       const config = new Configuration({ basePath: this.apiBase });
-      const formApi = new ConsultingFormApi(config);
+      const formApi = new ConsultationsApi(config);
 
       // The exact method name may vary depending on your OpenAPI generator output
-      await formApi.submitConsultingForm({ consultingForm: formData });
+      await formApi.submitConsultingForm({ consultation: formData });
 
       this.statusMessage = 'Form submitted successfully!';
       this.name = '';

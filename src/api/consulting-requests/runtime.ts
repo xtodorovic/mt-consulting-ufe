@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Waiting List Api
- * Consulting Waiting List management for Web-In-Cloud system
+ * Consulting List management for Web-In-Cloud system
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: xtodorovic@stuba.sk

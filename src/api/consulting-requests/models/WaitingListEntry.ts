@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Waiting List Api
- * Consulting Waiting List management for Web-In-Cloud system
+ * Consulting List management for Web-In-Cloud system
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: xtodorovic@stuba.sk
@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { Condition } from './Condition';
-import {
-    ConditionFromJSON,
-    ConditionFromJSONTyped,
-    ConditionToJSON,
-} from './Condition';
-
 /**
  * 
  * @export
@@ -62,12 +55,6 @@ export interface WaitingListEntry {
      * @memberof WaitingListEntry
      */
     estimatedDurationMinutes: number;
-    /**
-     * 
-     * @type {Condition}
-     * @memberof WaitingListEntry
-     */
-    condition?: Condition;
 }
 
 /**
@@ -99,7 +86,6 @@ export function WaitingListEntryFromJSONTyped(json: any, ignoreDiscriminator: bo
         'waitingSince': (new Date(json['waitingSince'])),
         'estimatedStart': !exists(json, 'estimatedStart') ? undefined : (new Date(json['estimatedStart'])),
         'estimatedDurationMinutes': json['estimatedDurationMinutes'],
-        'condition': !exists(json, 'condition') ? undefined : ConditionFromJSON(json['condition']),
     };
 }
 
@@ -118,7 +104,6 @@ export function WaitingListEntryToJSON(value?: WaitingListEntry | null): any {
         'waitingSince': (value.waitingSince.toISOString()),
         'estimatedStart': value.estimatedStart === undefined ? undefined : (value.estimatedStart.toISOString()),
         'estimatedDurationMinutes': value.estimatedDurationMinutes,
-        'condition': ConditionToJSON(value.condition),
     };
 }
 

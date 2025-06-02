@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Consultation Edit API
- * Allows editing of a consultation request (e.g., assigning time and video link)
+ * Waiting List Api
+ * Consulting List management for Web-In-Cloud system
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: xtodorovic@stuba.sk
@@ -19,6 +19,12 @@ import { exists, mapValues } from '../runtime';
  * @interface ConsultationUpdate
  */
 export interface ConsultationUpdate {
+    /**
+     * Unique identifier of the consultation request
+     * @type {string}
+     * @memberof ConsultationUpdate
+     */
+    id: string;
     /**
      * 
      * @type {Date}
@@ -44,6 +50,7 @@ export interface ConsultationUpdate {
  */
 export function instanceOfConsultationUpdate(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
     isInstance = isInstance && "scheduledDate" in value;
     isInstance = isInstance && "scheduledTime" in value;
     isInstance = isInstance && "videoLink" in value;
@@ -61,6 +68,7 @@ export function ConsultationUpdateFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'id': json['id'],
         'scheduledDate': (new Date(json['scheduledDate'])),
         'scheduledTime': json['scheduledTime'],
         'videoLink': json['videoLink'],
@@ -76,6 +84,7 @@ export function ConsultationUpdateToJSON(value?: ConsultationUpdate | null): any
     }
     return {
         
+        'id': value.id,
         'scheduledDate': (value.scheduledDate.toISOString().substr(0,10)),
         'scheduledTime': value.scheduledTime,
         'videoLink': value.videoLink,

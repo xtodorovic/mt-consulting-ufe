@@ -1,7 +1,7 @@
-apis/RequestsListApi.ts
+apis/ConsultationsApi.ts
 apis/index.ts
 index.ts
-models/Condition.ts
-models/WaitingListEntry.ts
+models/Consultation.ts
+models/ConsultationUpdate.ts
 models/index.ts
 runtime.ts
