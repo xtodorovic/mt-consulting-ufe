@@ -1,6 +1,8 @@
 import { Component, h, State, Prop } from '@stencil/core';
 import { Configuration, ConsultationsApi } from '../../api/consulting-requests';
-import '@material/web/icon/icon'
+if (typeof window !== 'undefined') {
+  import('@material/web/icon/icon');
+}
 
 interface Consultation {
   id: string;
